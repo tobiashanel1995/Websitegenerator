@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Torten für Feiern vorbestellen — Gattopardo Stolberg</title>
+  <meta name="description" content="Torten für Geburtstage, Hochzeiten und Feiern bei Gattopardo in Stolberg vorbestellen. Individuell nach Anlass — jetzt unverbindlich anfragen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,600&family=Karla:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body data-page="torten">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="section" style="padding-bottom:1.5rem">
+      <div class="wrap">
+        <p class="eyebrow">Torten auf Vorbestellung</p>
+        <h1>Die Torte, die deine Feier krönt</h1>
+        <p class="lead">Ob Geburtstag, Hochzeit, Kommunion oder Firmenfeier — wir fertigen deine Wunschtorte individuell an. Schick uns deine Vorstellung, wir melden uns mit Vorschlag und Preis.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap info-grid">
+        <div>
+          <div class="card">
+            <p class="eyebrow">Anfrage</p>
+            <h2 style="margin-top:0">Torte anfragen</h2>
+            <p>Unverbindlich — die Anfrage ist noch keine verbindliche Bestellung. Wir bestätigen Machbarkeit, Termin und Preis vorab.</p>
+
+            <form class="form" id="torte-form"
+                  action="https://formspree.io/f/DEIN_FORMSPREE_ID"
+                  method="POST">
+              <div class="field-row">
+                <div class="field">
+                  <label for="t-name">Name <span class="req" aria-hidden="true">*</span></label>
+                  <input id="t-name" name="Name" type="text" required autocomplete="name" />
+                </div>
+                <div class="field">
+                  <label for="t-phone">Telefon <span class="req" aria-hidden="true">*</span></label>
+                  <input id="t-phone" name="Telefon" type="tel" required autocomplete="tel" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="t-email">E-Mail</label>
+                <input id="t-email" name="E-Mail" type="email" autocomplete="email" />
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="t-anlass">Anlass</label>
+                  <select id="t-anlass" name="Anlass">
+                    <option>Geburtstag</option>
+                    <option>Hochzeit</option>
+                    <option>Kommunion / Taufe</option>
+                    <option>Firmenfeier</option>
+                    <option>Sonstiges</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="t-datum">Wunschtermin <span class="req" aria-hidden="true">*</span></label>
+                  <input id="t-datum" name="Wunschtermin" type="date" required />
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="t-personen">Für wie viele Personen?</label>
+                  <input id="t-personen" name="Personen" type="number" min="1" inputmode="numeric" placeholder="z. B. 12" />
+                </div>
+                <div class="field">
+                  <label for="t-art">Art der Torte</label>
+                  <input id="t-art" name="Art" type="text" placeholder="z. B. Sahne, Fondant, Eistorte" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="t-wunsch">Deine Wünsche</label>
+                <textarea id="t-wunsch" name="Wuensche" placeholder="Geschmack, Schrift/Motiv, Allergien, Farben …"></textarea>
+                <span class="help">Je mehr wir wissen, desto genauer wird der Vorschlag.</span>
+              </div>
+
+              <p class="form__note">
+                <strong>Vorlaufzeit:</strong> Bitte plane mindestens 2–3 Tage ein, für aufwändige Motivtorten gern mehr. Bei kurzfristigen Wünschen ruf uns direkt an: <a href="tel:+4924089296120">+49 2408 9296120</a>.
+              </p>
+
+              <div class="hero__cta">
+                <button class="btn btn--lg" type="submit">Anfrage senden</button>
+                <a class="btn btn--ghost" id="mailto-fallback" href="#">Stattdessen per E-Mail</a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div>
+          <p class="eyebrow">Beliebt</p>
+          <h2>Wobei wir helfen können</h2>
+          <p class="placeholder">Platzhalter — echte Torten-Beispiele &amp; Preise bitte ergänzen (siehe README).</p>
+          <ul class="prose mt-2">
+            <li><strong>Motivtorten</strong> für Kindergeburtstage</li>
+            <li><strong>Hochzeitstorten</strong> — mehrstöckig, nach Absprache</li>
+            <li><strong>Eistorten</strong> aus unserer Gelateria</li>
+            <li><strong>Klassiker</strong> wie Sahne-, Frucht- oder Schokoladentorte</li>
+          </ul>
+          <p style="margin-top:1.5rem">Lieber persönlich besprechen? Komm im Lokal vorbei oder <a href="tel:+4924089296120">ruf uns an</a> — wir beraten dich gern.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script>
+    // mailto-Fallback: baut aus den Formularfeldern eine E-Mail (falls kein
+    // Formspree/Backend konfiguriert ist).
+    document.addEventListener("DOMContentLoaded", function () {
+      var form = document.getElementById("torte-form");
+      var link = document.getElementById("mailto-fallback");
+      if (!form || !link) return;
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        var get = function (n) {
+          var el = form.querySelector('[name="' + n + '"]');
+          return el ? el.value : "";
+        };
+        var body =
+          "Anlass: " + get("Anlass") + "\n" +
+          "Wunschtermin: " + get("Wunschtermin") + "\n" +
+          "Personen: " + get("Personen") + "\n" +
+          "Art: " + get("Art") + "\n" +
+          "Wünsche: " + get("Wuensche") + "\n\n" +
+          "Name: " + get("Name") + "\n" +
+          "Telefon: " + get("Telefon") + "\n" +
+          "E-Mail: " + get("E-Mail");
+        var mail = (window.SITE && window.SITE.email) || "hallo@pizzeria-gattopardo.de";
+        window.location.href =
+          "mailto:" + mail +
+          "?subject=" + encodeURIComponent("Torten-Anfrage — " + (get("Name") || "")) +
+          "&body=" + encodeURIComponent(body);
+      });
+    });
+  </script>
+</body>
+</html>

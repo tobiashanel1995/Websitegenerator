@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontakt & Anfahrt — Gattopardo Stolberg</title>
+  <meta name="description" content="Kontakt, Öffnungszeiten und Anfahrt zur Pizzeria & Gelateria Gattopardo, Vennstraße 90, 52224 Stolberg. Telefon +49 2408 9296120." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,600&family=Karla:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body data-page="kontakt">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="section" style="padding-bottom:1.5rem">
+      <div class="wrap">
+        <p class="eyebrow">Kontakt</p>
+        <h1>Komm vorbei oder ruf uns an</h1>
+        <p class="lead">Wir freuen uns auf dich — im Lokal, am Telefon oder per Nachricht.</p>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="wrap info-grid">
+        <div class="stack">
+          <div class="card">
+            <p class="eyebrow" style="margin-top:0">Adresse &amp; Telefon</p>
+            <h2 style="margin:0 0 0.6rem">Pizzeria &amp; Gelateria Gattopardo</h2>
+            <p style="margin:0">
+              Vennstraße 90<br>
+              52224 Stolberg
+            </p>
+            <p style="margin:0.8rem 0 0">
+              <a class="phone-strong" href="tel:+4924089296120" style="color:var(--ember-ink);text-decoration:none">+49 2408 9296120</a>
+            </p>
+            <div class="hero__cta">
+              <a class="btn" href="tel:+4924089296120">Anrufen</a>
+              <a class="btn btn--ghost" href="https://www.openstreetmap.org/search?query=Vennstra%C3%9Fe%2090%2C%2052224%20Stolberg" target="_blank" rel="noopener">Route planen</a>
+            </div>
+          </div>
+
+          <div class="card">
+            <p class="eyebrow" style="margin-top:0">Öffnungszeiten</p>
+            <ul class="hours" data-hours></ul>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <p class="eyebrow" style="margin-top:0">Nachricht</p>
+            <h2 style="margin:0 0 0.6rem">Schreib uns</h2>
+            <form class="form" id="kontakt-form"
+                  action="https://formspree.io/f/DEIN_FORMSPREE_ID"
+                  method="POST">
+              <div class="field">
+                <label for="k-name">Name <span class="req" aria-hidden="true">*</span></label>
+                <input id="k-name" name="Name" type="text" required autocomplete="name" />
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="k-email">E-Mail <span class="req" aria-hidden="true">*</span></label>
+                  <input id="k-email" name="E-Mail" type="email" required autocomplete="email" />
+                </div>
+                <div class="field">
+                  <label for="k-phone">Telefon</label>
+                  <input id="k-phone" name="Telefon" type="tel" autocomplete="tel" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="k-msg">Deine Nachricht <span class="req" aria-hidden="true">*</span></label>
+                <textarea id="k-msg" name="Nachricht" required></textarea>
+              </div>
+              <p class="form__note">Mit dem Absenden werden deine Angaben zur Bearbeitung deiner Anfrage verwendet. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+              <div class="hero__cta">
+                <button class="btn btn--lg" type="submit">Nachricht senden</button>
+                <a class="btn btn--ghost" id="mailto-fallback" href="#">Stattdessen per E-Mail</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/cart.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var form = document.getElementById("kontakt-form");
+      var link = document.getElementById("mailto-fallback");
+      if (!form || !link) return;
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        var get = function (n) {
+          var el = form.querySelector('[name="' + n + '"]');
+          return el ? el.value : "";
+        };
+        var body =
+          "Nachricht:\n" + get("Nachricht") + "\n\n" +
+          "Name: " + get("Name") + "\n" +
+          "E-Mail: " + get("E-Mail") + "\n" +
+          "Telefon: " + get("Telefon");
+        var mail = (window.SITE && window.SITE.email) || "hallo@pizzeria-gattopardo.de";
+        window.location.href =
+          "mailto:" + mail +
+          "?subject=" + encodeURIComponent("Kontakt — " + (get("Name") || "")) +
+          "&body=" + encodeURIComponent(body);
+      });
+    });
+  </script>
+</body>
+</html>

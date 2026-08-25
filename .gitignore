@@ -1,0 +1,18 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Node (falls später Tooling dazukommt)
+node_modules/
+npm-debug.log*
+
+# lokale Umgebungs-/Geheimdateien
+.env
+.env.*
+
+# Python-Cache (aus Skill-Skripten)
+__pycache__/
+*.pyc
