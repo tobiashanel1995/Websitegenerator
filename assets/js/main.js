@@ -47,19 +47,17 @@
   };
   window.ICON = ICON;
 
-  /* -------------------------------------------------- Majolika-Kachel */
-  // 40×40 sizilianisches Motiv als Signature — dekorativ, via CSS-Variable.
+  /* -------------------------------------------------- Sternmedaillon */
+  // Feines achtstrahliges Caltagirone-Stern-Medaillon als Signature —
+  // zentrierter Trenner, via CSS-Variable (Messing auf Kalkputz).
   function tilePattern() {
     const s = `<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'>
-      <rect width='40' height='40' fill='%23f6ede0'/>
-      <path d='M20 2 L38 20 L20 38 L2 20 Z' fill='none' stroke='%2317726e' stroke-width='1.5'/>
-      <path d='M20 8 L32 20 L20 32 L8 20 Z' fill='%23bc4a2c' fill-opacity='0.16'/>
-      <circle cx='20' cy='20' r='4.5' fill='none' stroke='%23c98a2b' stroke-width='1.5'/>
-      <circle cx='20' cy='20' r='1.6' fill='%238f2c18'/>
-      <circle cx='20' cy='2' r='1.4' fill='%2317726e'/>
-      <circle cx='20' cy='38' r='1.4' fill='%2317726e'/>
-      <circle cx='2' cy='20' r='1.4' fill='%2317726e'/>
-      <circle cx='38' cy='20' r='1.4' fill='%2317726e'/>
+      <circle cx='20' cy='20' r='19' fill='%23f4eee1'/>
+      <g fill='none' stroke='%23a9812f' stroke-width='1'>
+        <path d='M20 3 L23.6 16.4 L37 20 L23.6 23.6 L20 37 L16.4 23.6 L3 20 L16.4 16.4 Z'/>
+        <circle cx='20' cy='20' r='4'/>
+      </g>
+      <circle cx='20' cy='20' r='1.5' fill='%232c5a4a'/>
     </svg>`;
     return `url("data:image/svg+xml,${s.replace(/\n\s*/g, "")}")`;
   }
@@ -133,13 +131,16 @@
   }
 
   function brandMark() {
-    // Kleines Majolika-Rosetten-Logo (Platzhalter für echtes Logo).
-    return `<svg viewBox="0 0 44 44" width="42" height="42" aria-hidden="true">
-      <rect width="44" height="44" rx="10" fill="#17726e"/>
-      <path d="M22 6 L38 22 L22 38 L6 22 Z" fill="none" stroke="#f6ede0" stroke-width="2"/>
-      <path d="M22 12 L32 22 L22 32 L12 22 Z" fill="#bc4a2c"/>
-      <circle cx="22" cy="22" r="4" fill="#c98a2b"/>
-      <circle cx="22" cy="22" r="1.7" fill="#f6ede0"/>
+    // Caltagirone-Sternmedaillon als Wortmarke-Signet (Platzhalter für echtes Logo).
+    return `<svg viewBox="0 0 46 46" width="46" height="46" aria-hidden="true">
+      <circle cx="23" cy="23" r="22.5" fill="#1e3f33"/>
+      <circle cx="23" cy="23" r="19" fill="none" stroke="#a9812f" stroke-width="0.9" opacity="0.7"/>
+      <path d="M23 6 L27 20 L41 23 L27 26 L23 40 L19 26 L5 23 L19 20 Z"
+            fill="none" stroke="#e7d3a8" stroke-width="1.2"/>
+      <path d="M23 12 L25.4 20.6 L34 23 L25.4 25.4 L23 34 L20.6 25.4 L12 23 L20.6 20.6 Z"
+            fill="#b24127" opacity="0.92"/>
+      <circle cx="23" cy="23" r="3.4" fill="#e7d3a8"/>
+      <circle cx="23" cy="23" r="1.3" fill="#1e3f33"/>
     </svg>`;
   }
 
