@@ -7,8 +7,17 @@
    2. Unter Account → API Keys den ÖFFENTLICHEN Key kopieren.
    3. Unten SNIPCART_PUBLIC_API_KEY ersetzen.
    4. Im Snipcart-Dashboard Stripe oder PayPal verbinden und die
-      Domain (z. B. pizzeria-gattopardo.de) hinterlegen, damit die
-      Preise per Crawling validiert werden können.
+      Domain (z. B. schmitz-bauzentrum.de) hinterlegen, damit die Preise
+      per Crawling validiert werden können.
+
+   >>> VERSAND & ABHOLUNG (Verkaufsbereich) <<<
+   Die zwei Wege werden als Snipcart-VERSANDMETHODEN im Dashboard angelegt:
+     • "Abholung im Bauzentrum" — Preis 0,00 € (Vorbestellung zur Abholung).
+     • "Lieferung" — GEWICHTSBASIERTE Staffelung. Jeder Artikel liefert sein
+       Gewicht über data-item-weight (aus products.js, in Gramm). Im Dashboard
+       unter Shipping die Gewichtsstufen/Zonen mit den echten Sätzen anlegen.
+   Für sehr schwere/sperrige Baustoffe empfiehlt sich zusätzlich eine Methode
+   "Lieferung nach Aufwand — auf Anfrage".
 
    Der ÖFFENTLICHE Key darf im Browser stehen — der geheime Key niemals.
    ========================================================================= */
@@ -79,9 +88,9 @@
   // Hinweis in der Konsole, falls der Key noch nicht gesetzt wurde.
   if (SNIPCART_PUBLIC_API_KEY.indexOf("REPLACE_WITH") === 0) {
     console.warn(
-      "[Gattopardo] Snipcart-Key fehlt noch. Bestellungen sind erst nach " +
-        "Eintragen des öffentlichen API-Keys in assets/js/cart.js aktiv. " +
-        "Telefonische Bestellung funktioniert unabhängig davon."
+      "[Schmitz Bauzentrum] Snipcart-Key fehlt noch. Der Online-Warenkorb ist " +
+        "erst nach Eintragen des öffentlichen API-Keys in assets/js/cart.js aktiv. " +
+        "Die Website (Katalog, Kontakt, Telefon) funktioniert unabhängig davon."
     );
   }
 })();

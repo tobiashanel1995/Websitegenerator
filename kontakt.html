@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kontakt & Anfahrt — Gattopardo Stolberg</title>
-  <meta name="description" content="Kontakt, Öffnungszeiten und Anfahrt zur Pizzeria & Gelateria Gattopardo, Vennstraße 90, 52224 Stolberg. Telefon +49 2408 9296120." />
+  <title>Kontakt & Anfahrt — Schmitz Bauzentrum Breinig & Langerwehe</title>
+  <meta name="description" content="Kontakt, Öffnungszeiten und Anfahrt zu Schmitz Bauzentrum in Stolberg-Breinig (Wilhelm-Pitz-Straße 61) und Langerwehe (Im Gewerbegebiet 5). Schreiben Sie uns oder rufen Sie an." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,600&family=Karla:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body data-page="kontakt">
@@ -17,69 +17,92 @@
   <main id="main">
     <section class="section" style="padding-bottom:1.5rem">
       <div class="wrap">
-        <p class="eyebrow">Kontakt</p>
-        <h1>Komm vorbei oder ruf uns an</h1>
-        <p class="lead">Wir freuen uns auf dich — im Lokal, am Telefon oder per Nachricht.</p>
+        <p class="eyebrow">Kontakt &amp; Anfahrt</p>
+        <h1>Wir sind für Sie da</h1>
+        <p class="lead">Ob Beratung, Angebot oder Frage zur Lieferung — melden Sie sich bei uns. Persönlich vor Ort, am Telefon oder per Nachricht.</p>
       </div>
     </section>
 
+    <!-- STANDORTE -->
     <section class="section" style="padding-top:0">
       <div class="wrap info-grid">
-        <div class="stack">
-          <div class="card">
-            <p class="eyebrow" style="margin-top:0">Adresse &amp; Telefon</p>
-            <h2 style="margin:0 0 0.6rem">Pizzeria &amp; Gelateria Gattopardo</h2>
-            <p style="margin:0">
-              Vennstraße 90<br>
-              52224 Stolberg
-            </p>
-            <p style="margin:0.8rem 0 0">
-              <a class="phone-strong" href="tel:+4924089296120" style="color:var(--ember-ink);text-decoration:none">+49 2408 9296120</a>
-            </p>
-            <div class="hero__cta">
-              <a class="btn" href="tel:+4924089296120">Anrufen</a>
-              <a class="btn btn--ghost" href="https://www.openstreetmap.org/search?query=Vennstra%C3%9Fe%2090%2C%2052224%20Stolberg" target="_blank" rel="noopener">Route planen</a>
-            </div>
-          </div>
-
-          <div class="card">
-            <p class="eyebrow" style="margin-top:0">Öffnungszeiten</p>
-            <ul class="hours" data-hours></ul>
+        <div class="card location-card">
+          <p class="eyebrow" style="margin-top:0">Standort Breinig</p>
+          <h2 style="margin:0 0 0.4rem">Schmitz Bauzentrum Breinig</h2>
+          <address class="addr">
+            <strong>Wilhelm-Pitz-Straße 61</strong><br>
+            52223 Stolberg-Breinig<br>
+            Tel. (02402) 93010 · Fax (02402) 37153
+          </address>
+          <p class="eyebrow" style="margin:0.6rem 0 0">Öffnungszeiten</p>
+          <ul class="hours" data-hours="breinig"></ul>
+          <div class="hero__cta" style="margin-top:1rem">
+            <a class="btn" href="tel:+49240293010">Anrufen</a>
+            <a class="btn btn--ghost" href="https://www.openstreetmap.org/search?query=Wilhelm-Pitz-Stra%C3%9Fe%2061%2C%2052223%20Stolberg" target="_blank" rel="noopener">Route planen</a>
           </div>
         </div>
 
-        <div>
-          <div class="card">
-            <p class="eyebrow" style="margin-top:0">Nachricht</p>
-            <h2 style="margin:0 0 0.6rem">Schreib uns</h2>
-            <form class="form" id="kontakt-form"
-                  action="https://formspree.io/f/DEIN_FORMSPREE_ID"
-                  method="POST">
+        <div class="card location-card">
+          <p class="eyebrow" style="margin-top:0">Standort Langerwehe</p>
+          <h2 style="margin:0 0 0.4rem">Schmitz Bauzentrum Langerwehe</h2>
+          <address class="addr">
+            <strong>Im Gewerbegebiet 5</strong><br>
+            52379 Langerwehe<br>
+            Tel. (02423) 2011 · Fax (02423) 5540
+          </address>
+          <p class="eyebrow" style="margin:0.6rem 0 0">Öffnungszeiten</p>
+          <ul class="hours" data-hours="langerwehe"></ul>
+          <div class="hero__cta" style="margin-top:1rem">
+            <a class="btn" href="tel:+4924232011">Anrufen</a>
+            <a class="btn btn--ghost" href="https://www.openstreetmap.org/search?query=Im%20Gewerbegebiet%205%2C%2052379%20Langerwehe" target="_blank" rel="noopener">Route planen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NACHRICHT -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="card">
+          <p class="eyebrow" style="margin-top:0">Nachricht</p>
+          <h2 style="margin:0 0 0.6rem">Schreiben Sie uns</h2>
+          <form class="form" id="kontakt-form"
+                action="https://formspree.io/f/DEIN_FORMSPREE_ID"
+                method="POST">
+            <div class="field-row">
               <div class="field">
                 <label for="k-name">Name <span class="req" aria-hidden="true">*</span></label>
                 <input id="k-name" name="Name" type="text" required autocomplete="name" />
               </div>
-              <div class="field-row">
-                <div class="field">
-                  <label for="k-email">E-Mail <span class="req" aria-hidden="true">*</span></label>
-                  <input id="k-email" name="E-Mail" type="email" required autocomplete="email" />
-                </div>
-                <div class="field">
-                  <label for="k-phone">Telefon</label>
-                  <input id="k-phone" name="Telefon" type="tel" autocomplete="tel" />
-                </div>
+              <div class="field">
+                <label for="k-standort">Wunsch-Standort</label>
+                <select id="k-standort" name="Standort">
+                  <option>Keine Angabe</option>
+                  <option>Breinig</option>
+                  <option>Langerwehe</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="k-email">E-Mail <span class="req" aria-hidden="true">*</span></label>
+                <input id="k-email" name="E-Mail" type="email" required autocomplete="email" />
               </div>
               <div class="field">
-                <label for="k-msg">Deine Nachricht <span class="req" aria-hidden="true">*</span></label>
-                <textarea id="k-msg" name="Nachricht" required></textarea>
+                <label for="k-phone">Telefon</label>
+                <input id="k-phone" name="Telefon" type="tel" autocomplete="tel" />
               </div>
-              <p class="form__note">Mit dem Absenden werden deine Angaben zur Bearbeitung deiner Anfrage verwendet. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
-              <div class="hero__cta">
-                <button class="btn btn--lg" type="submit">Nachricht senden</button>
-                <a class="btn btn--ghost" id="mailto-fallback" href="#">Stattdessen per E-Mail</a>
-              </div>
-            </form>
-          </div>
+            </div>
+            <div class="field">
+              <label for="k-msg">Ihre Nachricht <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="k-msg" name="Nachricht" required placeholder="Womit können wir helfen? Z. B. Produktanfrage, Angebot, Liefertermin …"></textarea>
+            </div>
+            <p class="form__note">Mit dem Absenden werden Ihre Angaben zur Bearbeitung Ihrer Anfrage verwendet. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+            <div class="hero__cta">
+              <button class="btn btn--lg" type="submit">Nachricht senden</button>
+              <a class="btn btn--ghost" id="mailto-fallback" href="#">Stattdessen per E-Mail</a>
+            </div>
+          </form>
         </div>
       </div>
     </section>
@@ -104,11 +127,12 @@
           "Nachricht:\n" + get("Nachricht") + "\n\n" +
           "Name: " + get("Name") + "\n" +
           "E-Mail: " + get("E-Mail") + "\n" +
-          "Telefon: " + get("Telefon");
-        var mail = (window.SITE && window.SITE.email) || "hallo@pizzeria-gattopardo.de";
+          "Telefon: " + get("Telefon") + "\n" +
+          "Wunsch-Standort: " + get("Standort");
+        var mail = (window.SITE && window.SITE.email) || "info@schmitz-bauzentrum.de";
         window.location.href =
           "mailto:" + mail +
-          "?subject=" + encodeURIComponent("Kontakt — " + (get("Name") || "")) +
+          "?subject=" + encodeURIComponent("Kontaktanfrage — " + (get("Name") || "")) +
           "&body=" + encodeURIComponent(body);
       });
     });
