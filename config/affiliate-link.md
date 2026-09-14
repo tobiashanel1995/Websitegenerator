@@ -6,12 +6,14 @@
 ## Dein Promolink
 
 ```
-AFFILIATE_LINK = YOUR_AFFILIATE_LINK
+AFFILIATE_LINK = https://www.digistore24.com/redir/607228/Tobi529/
 ```
 
-**So bekommst du ihn:** Digistore24-App → Affiliate-Marktplatz → „KI Speed
-Business" → Button **„Promolink kopieren"** (siehe Screenshot der Anfrage).
-Den kopierten Link oben statt `YOUR_AFFILIATE_LINK` einsetzen.
+- Produkt-ID: `607228` · Affiliate-Kürzel: `Tobi529`
+- Über diesen Link laufende Verkäufe werden dir zugeschrieben (50 % Provision).
+
+**So bekommst du ihn (falls er sich mal ändert):** Digistore24-App →
+Affiliate-Marktplatz → „KI Speed Business" → Button **„Promolink kopieren"**.
 
 ## Kurzlink (empfohlen für Videos)
 
