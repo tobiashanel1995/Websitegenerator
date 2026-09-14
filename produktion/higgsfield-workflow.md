@@ -5,11 +5,12 @@ verbunden — Claude kann die Generierung direkt ausführen.
 
 ## Voraussetzung: Guthaben
 
-- Aktuell: **Free-Plan, 10 Credits** (Stand der Verbindung).
-- Jede Video-Generierung kostet Credits — **10 reichen nur für wenige Tests.**
+- Aktuell: **Pro-Plan, ~610 Credits** (nach Aufladung).
+- Richtwerte: 1 Video-Szene (`seedance_2_5`, 5 s) ≈ **32,5 Credits**,
+  1 Bild (`gpt_image_2_5`) ≈ **1 Credit**. Ein Clip mit 3 Szenen ≈ **~97,5 Credits**.
 - **Immer zuerst `get_cost`** aufrufen (Kostenvorschau, ohne zu generieren),
   bevor echt generiert wird. So wird nichts ungewollt verbraucht.
-- Für ernsthafte Produktion: Guthaben aufladen / Plan upgraden.
+- Budget im Blick behalten: 610 Credits ≈ **6 komplette Clips**.
 
 ## Ablauf pro Clip
 

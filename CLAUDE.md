@@ -44,7 +44,7 @@ product and audience are German-speaking; keep new content German unless asked.
 
 ## Working with higgsfield (MCP)
 
-- The server is connected and authenticated (Free plan, ~10 credits at setup).
+- The server is connected and authenticated (Pro plan, ~610 credits after top-up).
 - **Always call generation tools with `get_cost: true` first** and get the
   user's go-ahead before spending credits — the balance is tiny.
 - Short videos must be **`aspect_ratio: "9:16"`**. Default video model:
