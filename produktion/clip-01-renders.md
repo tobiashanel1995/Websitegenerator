@@ -26,6 +26,18 @@ Kosten: 3 × 32,5 = **97,5 Credits**.
 - Ausgabe: **720×1280, 25 s** — an den User geliefert (Scratchpad ist flüchtig,
   Datei lokal sichern!).
 
+## Veröffentlichung
+
+- **TikTok verbunden:** connector `3b017dba-9adc-4c02-80f8-52314704e0a4` (Name „tiktok", active).
+- Clip zu Higgsfield hochgeladen (media `4552f222-b2b9-4850-802a-e923c3bea616`),
+  da TikTok nur Higgsfield-gehostete Assets akzeptiert.
+- **Als Entwurf** in TikTok abgelegt (Modus `UPLOAD_TO_DRAFT`),
+  publish_id `v_inbox_url~v2.7685463119539226657`.
+- Kennzeichnung: **AIGC/KI = ja**, **Branded Content = ja** → Label „Paid partnership".
+- Caption: „Werbung | 3 Dinge, die KI-Einsteiger zuerst verstehen sollten 👆
+  Link in meiner Bio #ki #onlinebusiness #werbung".
+- **Finale Freigabe in der TikTok-App** durch den User (Entwurf im Postfach).
+
 ## Offen / optional
 
 - [ ] Feinschliff der Overlay-Timings an die genauen VO-Betonungen anpassen
