@@ -38,6 +38,16 @@ Kosten: 3 × 32,5 = **97,5 Credits**.
   Link in meiner Bio #ki #onlinebusiness #werbung".
 - **Finale Freigabe in der TikTok-App** durch den User (Entwurf im Postfach).
 
+### Fix: „Fehler beim Öffnen des Entwurfs" (14.09.)
+
+- **Ursache:** erste Version ohne `+faststart` → `moov`-Atom am Dateiende;
+  TikTok-App kann die Vorschau nicht laden. Zusätzlich nur 720p.
+- **Behebung:** Re-Encode auf **1080×1920, 30 fps, H.264 high, AAC, `-movflags +faststart`**
+  (moov jetzt vorne). Neu hochgeladen (media `9386aecb-6273-400a-a9ed-4002a7c5c001`),
+  neuer Entwurf publish_id `v_inbox_url~v2.7685467485596026913`.
+- **Lehre für künftige Clips:** finalen Export **immer** mit `+faststart` und in
+  1080×1920 rendern (siehe `higgsfield-workflow.md`).
+
 ## Offen / optional
 
 - [ ] Feinschliff der Overlay-Timings an die genauen VO-Betonungen anpassen

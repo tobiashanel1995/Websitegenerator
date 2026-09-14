@@ -54,6 +54,15 @@ Willst du eigene Fotos/Clips (z. B. dein Gesicht) verwenden:
 - **Affiliate-Link** kommt in die **Bio**, nie eingebrannt in den Clip.
 - Ehrliche Aussagen — nur was `produkt/ki-speed-business.md` deckt.
 
+## Export-Pflicht für TikTok (sonst „Fehler beim Öffnen")
+
+Beim finalen ffmpeg-Export **immer**:
+- Auflösung **1080×1920**, 30 fps, `-pix_fmt yuv420p`, H.264 (`-profile:v high`), AAC.
+- **`-movflags +faststart`** — schiebt das `moov`-Atom nach vorne. Ohne das
+  kann die TikTok-App den Entwurf nicht öffnen (bereits einmal passiert, s.
+  `clip-01-renders.md`).
+- Prüfen: `ffprobe -v trace out.mp4 2>&1 | grep -m1 "type:'moov'"` → Offset muss klein sein.
+
 ## Nächster Schritt
 
 Sag einfach: **„Generiere Skript 01, Szene 1"** — Claude prüft dann die Kosten
