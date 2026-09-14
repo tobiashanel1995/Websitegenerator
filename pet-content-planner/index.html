@@ -1,0 +1,655 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PfotenPlan</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#F1F3EE;
+    --paper-raised:#FFFFFF;
+    --ink:#1E2420;
+    --ink-soft:#4B564E;
+    --line:#D8DED2;
+    --accent:#4C5FD5;
+    --accent-ink:#FFFFFF;
+    --sp-hund:#C97A2E;
+    --sp-katze:#8C4F9C;
+    --sp-pferd:#A6472A;
+    --sp-chinchilla:#3E7290;
+    --sp-mix:#4C5FD5;
+    --st-idee:#9BA39B;
+    --st-skript:#6E93A8;
+    --st-gefilmt:#3E7DA0;
+    --st-geschnitten:#2E8F79;
+    --st-gepostet:#2F8F5B;
+    --danger:#B3432F;
+    --shadow: 0 1px 2px rgba(30,36,32,0.06), 0 4px 14px rgba(30,36,32,0.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#141815;
+      --paper-raised:#1C2320;
+      --ink:#ECEFE9;
+      --ink-soft:#AEB8AC;
+      --line:#2C332D;
+      --accent:#8791EC;
+      --accent-ink:#12141C;
+      --sp-hund:#E3A25C;
+      --sp-katze:#C288D1;
+      --sp-pferd:#D98A6C;
+      --sp-chinchilla:#7FB0CF;
+      --sp-mix:#8791EC;
+      --st-idee:#8F978F;
+      --st-skript:#8FB4C7;
+      --st-gefilmt:#6FB1D4;
+      --st-geschnitten:#5FC2A9;
+      --st-gepostet:#5FC287;
+      --danger:#E08066;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 18px rgba(0,0,0,0.28);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#141815;
+    --paper-raised:#1C2320;
+    --ink:#ECEFE9;
+    --ink-soft:#AEB8AC;
+    --line:#2C332D;
+    --accent:#8791EC;
+    --accent-ink:#12141C;
+    --sp-hund:#E3A25C;
+    --sp-katze:#C288D1;
+    --sp-pferd:#D98A6C;
+    --sp-chinchilla:#7FB0CF;
+    --sp-mix:#8791EC;
+    --st-idee:#8F978F;
+    --st-skript:#8FB4C7;
+    --st-gefilmt:#6FB1D4;
+    --st-geschnitten:#5FC2A9;
+    --st-gepostet:#5FC287;
+    --danger:#E08066;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 18px rgba(0,0,0,0.28);
+  }
+
+  *{box-sizing:border-box;}
+  html{color-scheme:light dark;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 20px 64px;}
+  h1,h2,h3{font-family:'Fraunces', Georgia, serif;font-weight:600;text-wrap:balance;margin:0;}
+  .mono{font-family:'IBM Plex Mono', ui-monospace, monospace;}
+
+  header.top{
+    display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-between:space-between;
+    justify-content:space-between;
+    padding-bottom:24px;border-bottom:1px solid var(--line);margin-bottom:28px;
+  }
+  header.top .brand{display:flex;flex-direction:column;gap:6px;}
+  header.top h1{font-size:clamp(28px,4vw,38px);letter-spacing:-0.01em;}
+  header.top p{margin:0;color:var(--ink-soft);font-size:15px;max-width:52ch;}
+  .paw{font-size:0.7em;vertical-align:2px;opacity:0.75;}
+
+  /* stat tiles */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-bottom:28px;}
+  .tile{
+    background:var(--paper-raised);border:1px solid var(--line);border-radius:12px;
+    padding:16px 18px;box-shadow:var(--shadow);
+  }
+  .tile h3{font-size:13px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-soft);font-family:'Work Sans';font-weight:600;margin-bottom:10px;}
+  .goal-row{display:flex;align-items:baseline;gap:8px;margin-bottom:8px;}
+  .goal-row .num{font-family:'Fraunces';font-size:30px;font-weight:600;}
+  .goal-row .of{color:var(--ink-soft);font-size:14px;}
+  .goal-row input{
+    width:44px;font-family:'IBM Plex Mono';font-size:14px;background:transparent;color:var(--ink);
+    border:1px solid var(--line);border-radius:6px;padding:2px 4px;text-align:center;
+  }
+  .bar{height:8px;border-radius:5px;background:var(--line);overflow:hidden;}
+  .bar > div{height:100%;background:var(--accent);border-radius:5px;transition:width .25s ease;}
+
+  .mix-bar{display:flex;height:10px;border-radius:5px;overflow:hidden;margin-bottom:10px;background:var(--line);}
+  .mix-bar span{height:100%;}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 12px;font-size:12.5px;color:var(--ink-soft);}
+  .legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;vertical-align:1px;}
+
+  .steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+  .steps li{display:flex;align-items:center;gap:9px;font-size:14px;}
+  .steps input{accent-color:var(--accent);width:16px;height:16px;flex:none;}
+  .steps span.done{color:var(--ink-soft);text-decoration:line-through;}
+  .steps .mins{margin-left:auto;color:var(--ink-soft);font-family:'IBM Plex Mono';font-size:12px;}
+
+  /* toolbar */
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:16px;}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;}
+  .chip{
+    border:1px solid var(--line);background:var(--paper-raised);color:var(--ink-soft);
+    padding:6px 12px;border-radius:999px;font-size:13px;cursor:pointer;font-family:'Work Sans';font-weight:500;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);}
+  .chip:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--accent);outline-offset:2px;
+  }
+  button.primary{
+    background:var(--accent);color:var(--accent-ink);border:none;border-radius:9px;
+    padding:9px 16px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Work Sans';
+  }
+  button.ghost{
+    background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:9px;
+    padding:8px 14px;font-size:13.5px;cursor:pointer;font-family:'Work Sans';font-weight:500;
+  }
+  button.primary:hover{filter:brightness(1.06);}
+  button.ghost:hover{background:var(--paper-raised);}
+
+  /* add form */
+  form.add{
+    background:var(--paper-raised);border:1px solid var(--line);border-radius:12px;padding:18px;
+    box-shadow:var(--shadow);margin-bottom:22px;display:grid;gap:12px;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  }
+  form.add[hidden]{display:none;}
+  form.add .full{grid-column:1/-1;}
+  form.add label{display:flex;flex-direction:column;gap:5px;font-size:12.5px;color:var(--ink-soft);font-weight:500;}
+  form.add input, form.add select, form.add textarea{
+    font-family:'Work Sans';font-size:14px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);
+    background:var(--paper);color:var(--ink);
+  }
+  form.add textarea{resize:vertical;min-height:44px;font-family:'Work Sans';}
+  form.add .actions{grid-column:1/-1;display:flex;gap:10px;justify-content:flex-end;}
+
+  /* board */
+  .board{
+    display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,1fr);
+    gap:14px;overflow-x:auto;padding-bottom:8px;margin-bottom:32px;
+  }
+  .col{background:var(--paper-raised);border:1px solid var(--line);border-radius:12px;padding:12px;min-height:120px;}
+  .col-head{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding:0 2px;}
+  .col-head i.dot{width:9px;height:9px;border-radius:50%;flex:none;}
+  .col-head h3{font-size:13px;font-family:'Work Sans';font-weight:600;text-transform:uppercase;letter-spacing:0.05em;}
+  .col-head .count{margin-left:auto;font-family:'IBM Plex Mono';font-size:12px;color:var(--ink-soft);}
+  .cards{display:flex;flex-direction:column;gap:10px;}
+
+  .card{
+    background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:11px 12px;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .card h4{font-family:'Fraunces';font-size:15px;font-weight:600;margin:0;line-height:1.25;}
+  .card .tags{display:flex;gap:6px;flex-wrap:wrap;}
+  .tag{
+    font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;color:#fff;
+    font-family:'Work Sans';letter-spacing:0.01em;
+  }
+  .card .hook{font-size:12.5px;color:var(--ink-soft);line-height:1.4;}
+  .card .meta-row{display:flex;gap:8px;align-items:center;}
+  .card select, .card input[type="date"]{
+    font-family:'IBM Plex Mono';font-size:11.5px;border:1px solid var(--line);border-radius:6px;
+    background:var(--paper-raised);color:var(--ink);padding:3px 5px;
+  }
+  .card .del{
+    margin-left:auto;background:none;border:none;color:var(--ink-soft);cursor:pointer;font-size:15px;
+    line-height:1;padding:2px 4px;
+  }
+  .card .del:hover{color:var(--danger);}
+  .example-badge{font-size:10.5px;color:var(--ink-soft);font-style:italic;}
+
+  /* idea library */
+  details.library{
+    background:var(--paper-raised);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:22px;
+  }
+  details.library > summary{cursor:pointer;font-family:'Fraunces';font-size:17px;font-weight:600;list-style:none;display:flex;align-items:center;gap:8px;}
+  details.library > summary::-webkit-details-marker{display:none;}
+  details.library > summary::before{content:"▸";font-size:13px;color:var(--ink-soft);transition:transform .15s;}
+  details.library[open] > summary::before{transform:rotate(90deg);}
+  .lib-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px;margin-top:14px;}
+  .lib-item{border:1px solid var(--line);border-radius:9px;padding:10px 11px;display:flex;flex-direction:column;gap:7px;background:var(--paper);}
+  .lib-item p{margin:0;font-size:13px;line-height:1.35;}
+  .lib-item .add-btn{align-self:flex-start;font-size:12px;padding:4px 10px;}
+
+  footer{border-top:1px solid var(--line);padding-top:16px;margin-top:8px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;color:var(--ink-soft);font-size:12.5px;}
+
+  @media (max-width:640px){
+    .toolbar{flex-direction:column;align-items:stretch;}
+    form.add .actions{justify-content:stretch;}
+    form.add .actions button{flex:1;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <h1>PfotenPlan <span class="paw">🐾</span></h1>
+      <p>Content-Planer für deinen Multi-Pet-Comedy-Account — Hund, Katze, Pferd &amp; Chinchilla, ein Rhythmus, vier Stunden pro Woche.</p>
+    </div>
+    <div class="mono" id="week-label" style="color:var(--ink-soft);font-size:13px;"></div>
+  </header>
+
+  <section class="stats">
+    <div class="tile">
+      <h3>Wochenziel</h3>
+      <div class="goal-row">
+        <span class="num" id="goal-num">0</span>
+        <span class="of">/ <input type="number" id="goal-target" min="1" max="14" value="3"> Posts diese Woche</span>
+      </div>
+      <div class="bar"><div id="goal-bar" style="width:0%"></div></div>
+    </div>
+
+    <div class="tile">
+      <h3>Format-Mix (alle Ideen)</h3>
+      <div class="mix-bar" id="mix-bar"></div>
+      <div class="legend" id="mix-legend"></div>
+    </div>
+
+    <div class="tile">
+      <h3>4-Stunden-Workflow, diese Woche</h3>
+      <ul class="steps" id="steps"></ul>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="chips" id="filter-chips"></div>
+    <div style="display:flex;gap:8px;">
+      <button class="ghost" id="btn-export">Exportieren</button>
+      <button class="ghost" id="btn-import">Importieren</button>
+      <input type="file" id="file-import" accept="application/json" hidden>
+      <button class="primary" id="btn-add-toggle">+ Neue Idee</button>
+    </div>
+  </div>
+
+  <form class="add" id="add-form" hidden>
+    <label class="full">Titel
+      <input type="text" id="f-title" placeholder="z. B. Chinchilla-Popcornsprung in Zeitlupe" required>
+    </label>
+    <label>Tierart
+      <select id="f-species">
+        <option value="hund">Hund</option>
+        <option value="katze">Katze</option>
+        <option value="pferd">Pferd</option>
+        <option value="chinchilla">Chinchilla</option>
+        <option value="mix">Mix / Crossover</option>
+      </select>
+    </label>
+    <label>Format
+      <select id="f-format">
+        <option>Reel</option>
+        <option>Karussell</option>
+        <option>Foto</option>
+        <option>Story</option>
+      </select>
+    </label>
+    <label>Geplantes Datum
+      <input type="date" id="f-date">
+    </label>
+    <label class="full">Hook (erste 1–3 Sekunden)
+      <textarea id="f-hook" placeholder="Was hält den Daumen auf, bevor gescrollt wird?"></textarea>
+    </label>
+    <label class="full">Hashtags / Notizen
+      <input type="text" id="f-notes" placeholder="#chinchilla #haustiercomedy …">
+    </label>
+    <div class="actions">
+      <button type="button" class="ghost" id="btn-cancel-add">Abbrechen</button>
+      <button type="submit" class="primary">Idee speichern</button>
+    </div>
+  </form>
+
+  <div class="board" id="board"></div>
+
+  <details class="library">
+    <summary>Ideen-Bibliothek — 16 Starter-Hooks für den leeren Kopf</summary>
+    <div class="lib-grid" id="lib-grid"></div>
+  </details>
+
+  <footer>
+    <span>Daten liegen nur lokal in diesem Browser (localStorage) — vor Cache-Löschung mit „Exportieren“ sichern.</span>
+    <span>Strategie-Hintergrund: STRATEGIE.md im selben Ordner</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var STORE_KEY = "pfotenplan_v1";
+  var STATUSES = [
+    {key:"idee", label:"Idee", color:"--st-idee"},
+    {key:"skript", label:"Skript", color:"--st-skript"},
+    {key:"gefilmt", label:"Gefilmt", color:"--st-gefilmt"},
+    {key:"geschnitten", label:"Geschnitten", color:"--st-geschnitten"},
+    {key:"gepostet", label:"Gepostet", color:"--st-gepostet"}
+  ];
+  var SPECIES = [
+    {key:"hund", label:"Hund", color:"--sp-hund"},
+    {key:"katze", label:"Katze", color:"--sp-katze"},
+    {key:"pferd", label:"Pferd", color:"--sp-pferd"},
+    {key:"chinchilla", label:"Chinchilla", color:"--sp-chinchilla"},
+    {key:"mix", label:"Mix", color:"--sp-mix"}
+  ];
+  var STEP_DEFS = [
+    {label:"Trends & Ideen sichten", mins:"30 Min"},
+    {label:"Batch-Dreh (alle Tiere an einem Termin)", mins:"120 Min"},
+    {label:"Schnitt", mins:"60 Min"},
+    {label:"Captions, Hashtags & Einplanen", mins:"30 Min"}
+  ];
+
+  var STARTER_LIBRARY = [
+    {title:"Hund reagiert dramatisch auf eine Gurke", species:"hund", format:"Reel", hook:"Stiller Moment — dann Kamerawechsel zur Reaktion."},
+    {title:"Zoomies direkt nach dem Baden, Superzeitlupe", species:"hund", format:"Reel", hook:"\"Niemand hat ihn gefragt, aber er läuft trotzdem.\""},
+    {title:"Hund vs. Staubsauger: die ewige Fehde", species:"hund", format:"Karussell", hook:"Bild 1: Frieden. Bild 2: Krieg."},
+    {title:"Katze ignoriert 40€-Spielzeug für den Karton", species:"katze", format:"Reel", hook:"Kaufbeleg einblenden, dann Karton zeigen."},
+    {title:"3-Uhr-nachts-Zoomies-Protokoll", species:"katze", format:"Story", hook:"Zeitstempel groß ins Bild."},
+    {title:"Katze bewertet mein Homeoffice-Outfit", species:"katze", format:"Reel", hook:"Punktetafel-Sound beim Blick der Katze."},
+    {title:"Pferd hat mehr Diva-Allüren als ich", species:"pferd", format:"Reel", hook:"\"Sie wartet. Ich warte auch.\""},
+    {title:"Erste Reaktion auf Regen: Weltuntergang", species:"pferd", format:"Reel", hook:"Zeitraffer vom trockenen zum ersten Tropfen."},
+    {title:"Pferd vs. Plastiktüte im Wind", species:"pferd", format:"Karussell", hook:"Bild 1: Tüte. Bild 2: Fluchtdistanz 50 Meter."},
+    {title:"Sandbad in Zeitlupe — oddly satisfying", species:"chinchilla", format:"Reel", hook:"Kein Ton nötig, nur die Staubwolke."},
+    {title:"Chinchilla-Bürozeiten: aktiv, wenn ich schlafe", species:"chinchilla", format:"Story", hook:"Uhrzeit 2:14 Uhr groß einblenden."},
+    {title:"Popcorn-Sprung bei Leckerli-Ankündigung", species:"chinchilla", format:"Reel", hook:"Zähle laut mit, wie oft er springt."},
+    {title:"Rangordnung im Haushalt: Wer darf zuerst ans Futter", species:"mix", format:"Reel", hook:"Splitscreen aller vier beim Warten."},
+    {title:"Alle vier reagieren auf denselben komischen Sound", species:"mix", format:"Karussell", hook:"Ein Bild pro Tier, gleicher Moment."},
+    {title:"Tier-Casting: Wer wäre der beste Mitbewohner?", species:"mix", format:"Reel", hook:"Bewerbungsgespräch-Voiceover, ernst vorgetragen."},
+    {title:"POV: Du kommst nach Hause — Reaktion aller vier im Vergleich", species:"mix", format:"Reel", hook:"Tür geht auf, Schnitt durch alle vier Zimmer."}
+  ];
+
+  var STARTER_CARDS = [
+    Object.assign({}, STARTER_LIBRARY[0], {status:"idee", notes:"#hundecomedy #dogsoftiktok", date:"", example:true}),
+    Object.assign({}, STARTER_LIBRARY[9], {status:"skript", notes:"#chinchilla #petsofinstagram", date:"", example:true}),
+    Object.assign({}, STARTER_LIBRARY[6], {status:"gefilmt", notes:"#pferdeliebe #horsesofinstagram", date:"", example:true}),
+    Object.assign({}, STARTER_LIBRARY[12], {status:"gepostet", notes:"#multipet #haustiercomedy", date:"", example:true})
+  ];
+
+  function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+  function tok(name){ return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+
+  function isoWeekKey(d){
+    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    var day = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - day);
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(),0,1));
+    var weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    return d.getUTCFullYear() + "-W" + String(weekNo).padStart(2,"0");
+  }
+  function startOfWeek(d){
+    var day = (d.getDay() + 6) % 7; // Monday = 0
+    var res = new Date(d);
+    res.setDate(d.getDate() - day);
+    res.setHours(0,0,0,0);
+    return res;
+  }
+  function endOfWeek(d){
+    var s = startOfWeek(d);
+    var e = new Date(s);
+    e.setDate(s.getDate()+6);
+    e.setHours(23,59,59,999);
+    return e;
+  }
+
+  var state = load();
+
+  function load(){
+    try{
+      var raw = localStorage.getItem(STORE_KEY);
+      if(raw) return JSON.parse(raw);
+    }catch(e){}
+    return { items: STARTER_CARDS.map(function(c){ return Object.assign({id:uid()}, c); }), steps:{}, goal:3, filter:"alle" };
+  }
+  function save(){
+    try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){}
+  }
+
+  function currentWeekLabel(){
+    var now = new Date();
+    var s = startOfWeek(now), e = endOfWeek(now);
+    var fmt = function(d){ return d.toLocaleDateString("de-DE",{day:"2-digit",month:"2-digit"}); };
+    return "Woche " + fmt(s) + " – " + fmt(e);
+  }
+
+  function render(){
+    document.getElementById("week-label").textContent = currentWeekLabel();
+    renderGoal();
+    renderMix();
+    renderSteps();
+    renderChips();
+    renderBoard();
+    renderLibrary();
+    save();
+  }
+
+  function renderGoal(){
+    var now = new Date();
+    var s = startOfWeek(now), e = endOfWeek(now);
+    var postedThisWeek = state.items.filter(function(it){
+      if(it.status !== "gepostet" || !it.date) return false;
+      var d = new Date(it.date + "T12:00:00");
+      return d >= s && d <= e;
+    }).length;
+    var target = state.goal || 3;
+    document.getElementById("goal-num").textContent = postedThisWeek;
+    document.getElementById("goal-target").value = target;
+    var pct = Math.max(0, Math.min(100, Math.round((postedThisWeek/target)*100)));
+    document.getElementById("goal-bar").style.width = pct + "%";
+  }
+
+  function renderMix(){
+    var counts = {};
+    SPECIES.forEach(function(s){ counts[s.key]=0; });
+    state.items.forEach(function(it){ if(counts[it.species]!==undefined) counts[it.species]++; });
+    var total = state.items.length || 1;
+    var bar = document.getElementById("mix-bar");
+    var legend = document.getElementById("mix-legend");
+    bar.innerHTML = "";
+    legend.innerHTML = "";
+    SPECIES.forEach(function(s){
+      var c = counts[s.key];
+      if(c>0){
+        var seg = document.createElement("span");
+        seg.style.width = (c/total*100) + "%";
+        seg.style.background = tok(s.color);
+        bar.appendChild(seg);
+      }
+      var li = document.createElement("span");
+      li.innerHTML = '<i style="background:'+tok(s.color)+'"></i>' + s.label + " (" + c + ")";
+      legend.appendChild(li);
+    });
+  }
+
+  function renderSteps(){
+    var wk = isoWeekKey(new Date());
+    if(!state.steps[wk]) state.steps[wk] = STEP_DEFS.map(function(){ return false; });
+    var arr = state.steps[wk];
+    var ul = document.getElementById("steps");
+    ul.innerHTML = "";
+    STEP_DEFS.forEach(function(def, i){
+      var li = document.createElement("li");
+      var checked = arr[i] ? "checked" : "";
+      var cls = arr[i] ? "done" : "";
+      li.innerHTML = '<input type="checkbox" data-step="'+i+'" '+checked+'>' +
+        '<span class="'+cls+'">'+def.label+'</span>' +
+        '<span class="mins">'+def.mins+'</span>';
+      ul.appendChild(li);
+    });
+    ul.querySelectorAll("input[type=checkbox]").forEach(function(cb){
+      cb.addEventListener("change", function(){
+        var i = +cb.getAttribute("data-step");
+        state.steps[wk][i] = cb.checked;
+        renderSteps();
+        save();
+      });
+    });
+  }
+
+  function renderChips(){
+    var wrap = document.getElementById("filter-chips");
+    wrap.innerHTML = "";
+    var all = [{key:"alle", label:"Alle"}].concat(SPECIES);
+    all.forEach(function(s){
+      var b = document.createElement("button");
+      b.className = "chip";
+      b.type = "button";
+      b.textContent = s.label;
+      b.setAttribute("aria-pressed", state.filter === s.key ? "true":"false");
+      b.addEventListener("click", function(){
+        state.filter = s.key;
+        render();
+      });
+      wrap.appendChild(b);
+    });
+  }
+
+  function renderBoard(){
+    var board = document.getElementById("board");
+    board.innerHTML = "";
+    var items = state.items.filter(function(it){
+      return state.filter === "alle" || it.species === state.filter;
+    });
+    STATUSES.forEach(function(st){
+      var col = document.createElement("div");
+      col.className = "col";
+      var list = items.filter(function(it){ return it.status === st.key; });
+      col.innerHTML = '<div class="col-head"><i class="dot" style="background:'+tok(st.color)+'"></i>' +
+        '<h3>'+st.label+'</h3><span class="count">'+list.length+'</span></div>' +
+        '<div class="cards"></div>';
+      var cardsWrap = col.querySelector(".cards");
+      list.forEach(function(it){ cardsWrap.appendChild(renderCard(it)); });
+      board.appendChild(col);
+    });
+  }
+
+  function renderCard(it){
+    var sp = SPECIES.filter(function(s){ return s.key===it.species; })[0] || SPECIES[0];
+    var card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML =
+      '<h4>'+escapeHtml(it.title)+'</h4>' +
+      '<div class="tags">' +
+        '<span class="tag" style="background:'+tok(sp.color)+'">'+sp.label+'</span>' +
+        '<span class="tag" style="background:'+tok("--ink-soft")+'">'+escapeHtml(it.format)+'</span>' +
+      '</div>' +
+      (it.hook ? '<div class="hook">'+escapeHtml(it.hook)+'</div>' : '') +
+      (it.example ? '<div class="example-badge">Beispiel-Idee zum Loslegen</div>' : '') +
+      '<div class="meta-row">' +
+        '<select class="st-select"></select>' +
+        '<input type="date" class="dt-input" value="'+(it.date||'')+'">' +
+        '<button class="del" title="Löschen">×</button>' +
+      '</div>';
+    var sel = card.querySelector(".st-select");
+    STATUSES.forEach(function(s){
+      var o = document.createElement("option");
+      o.value = s.key; o.textContent = s.label;
+      if(s.key===it.status) o.selected = true;
+      sel.appendChild(o);
+    });
+    sel.addEventListener("change", function(){ it.status = sel.value; render(); });
+    card.querySelector(".dt-input").addEventListener("change", function(e){ it.date = e.target.value; render(); });
+    card.querySelector(".del").addEventListener("click", function(){
+      if(confirm('„'+it.title+'" wirklich löschen?')){
+        state.items = state.items.filter(function(x){ return x.id !== it.id; });
+        render();
+      }
+    });
+    return card;
+  }
+
+  function renderLibrary(){
+    var grid = document.getElementById("lib-grid");
+    grid.innerHTML = "";
+    STARTER_LIBRARY.forEach(function(entry){
+      var sp = SPECIES.filter(function(s){ return s.key===entry.species; })[0];
+      var div = document.createElement("div");
+      div.className = "lib-item";
+      div.innerHTML =
+        '<span class="tag" style="background:'+tok(sp.color)+';align-self:flex-start;">'+sp.label+' · '+entry.format+'</span>' +
+        '<p><strong>'+escapeHtml(entry.title)+'</strong><br>'+escapeHtml(entry.hook)+'</p>' +
+        '<button class="ghost add-btn" type="button">In Planer übernehmen</button>';
+      div.querySelector("button").addEventListener("click", function(){
+        state.items.push({
+          id: uid(), title: entry.title, species: entry.species, format: entry.format,
+          hook: entry.hook, notes: "", status: "idee", date: "", example:false
+        });
+        render();
+      });
+      grid.appendChild(div);
+    });
+  }
+
+  function escapeHtml(s){
+    return String(s||"").replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+
+  // form handling
+  var addForm = document.getElementById("add-form");
+  document.getElementById("btn-add-toggle").addEventListener("click", function(){
+    addForm.hidden = !addForm.hidden;
+    if(!addForm.hidden) document.getElementById("f-title").focus();
+  });
+  document.getElementById("btn-cancel-add").addEventListener("click", function(){
+    addForm.hidden = true; addForm.reset();
+  });
+  addForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var title = document.getElementById("f-title").value.trim();
+    if(!title) return;
+    state.items.push({
+      id: uid(),
+      title: title,
+      species: document.getElementById("f-species").value,
+      format: document.getElementById("f-format").value,
+      date: document.getElementById("f-date").value,
+      hook: document.getElementById("f-hook").value.trim(),
+      notes: document.getElementById("f-notes").value.trim(),
+      status: "idee",
+      example: false
+    });
+    addForm.reset();
+    addForm.hidden = true;
+    render();
+  });
+
+  document.getElementById("goal-target").addEventListener("change", function(e){
+    state.goal = Math.max(1, +e.target.value || 3);
+    render();
+  });
+
+  document.getElementById("btn-export").addEventListener("click", function(){
+    var blob = new Blob([JSON.stringify(state, null, 2)], {type:"application/json"});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = "pfotenplan-export.json";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
+  document.getElementById("btn-import").addEventListener("click", function(){
+    document.getElementById("file-import").click();
+  });
+  document.getElementById("file-import").addEventListener("change", function(e){
+    var file = e.target.files[0];
+    if(!file) return;
+    var reader = new FileReader();
+    reader.onload = function(){
+      try{
+        var data = JSON.parse(reader.result);
+        if(data && Array.isArray(data.items)){
+          state = data;
+          render();
+        }else{
+          alert("Datei sieht nicht wie ein PfotenPlan-Export aus.");
+        }
+      }catch(err){
+        alert("Konnte Datei nicht lesen: " + err.message);
+      }
+    };
+    reader.readAsText(file);
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
