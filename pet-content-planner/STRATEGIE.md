@@ -108,7 +108,59 @@ beantworten), das separat von der Produktionszeit läuft.
 
 ---
 
-## 5. Analyse-Rhythmus (weil ich keinen direkten Zugriff habe)
+## 5. TikTok-Algorithmus: Warum Videos bei ~200 Views hängenbleiben
+
+Kein Tool und keine Person kann "garantiert viral" liefern — das ist kein
+Trick, der einmal geknackt wird, sondern ein Testverfahren, das bei jedem
+Video neu abläuft. ~200 Aufrufe ist aber ein sehr spezifisches, diagnostizierbares
+Muster:
+
+**Wie die Ausspielung funktioniert:** Jedes neue Video geht zuerst an ein
+kleines **Testpublikum** (oft 100–300 Accounts, überwiegend Fremde, nicht die
+eigenen Follower). Innerhalb der ersten 30–60 Minuten misst der Algorithmus,
+in ungefährer Gewichtung:
+
+1. **Completion Rate** — wird bis zum Ende geschaut? (bei Kurzvideos das
+   wichtigste Signal)
+2. **Rewatches/Loop** — wird es zweimal geschaut?
+3. **Shares** — das stärkste Einzelsignal: "das muss jemand anders sehen"
+4. **Comments**
+5. Likes (schwächstes Signal von allen)
+
+Sind diese Werte im Testbatch gut, geht es an einen größeren Kreis. Wenn
+nicht, **stoppt die Ausspielung genau dort** — bei ein paar hundert Views.
+Das ist kein Zufall, sondern messbar und damit reparierbar.
+
+**Der wahrscheinlich größte Hebel: echtes Video statt Foto-Diashow.** Eine
+Foto-Montage mit Ken-Burns-Effekt — egal wie gut geschnitten — startet mit
+einem strukturellen Nachteil gegenüber einem Clip mit echter Bewegung: Der
+Algorithmus und die Nutzer:innen selbst bevorzugen bewegtes Filmmaterial für
+die FYP-Ausspielung deutlich. Sobald echtes Videomaterial vorhanden ist,
+sollte das immer die erste Wahl vor einer Diashow sein.
+
+**Checkliste, wenn Trend-Audio (aus dem "Trends"-Tab der Audio-Auswahl)
+bereits korrekt genutzt wird, aber die Reichweite trotzdem stagniert:**
+
+- **Pattern-Interrupt in den ersten 0,5–1 Sekunden** — nicht nur Text-Hook,
+  sondern eine visuelle Überraschung/Bewegung direkt im ersten Frame.
+- **Loop-fähiges Ende** — der letzte Frame führt gedanklich zurück zum
+  ersten, damit das Video automatisch neu anfängt und "aus Versehen"
+  zweimal geschaut wird.
+- **Explizite Frage in Caption oder Video** als Kommentar-Köder.
+- **Postfrequenz statt Einzel-Perfektion** — der Algorithmus lernt aus
+  vielen Datenpunkten. Ein einzelnes "perfektes" Video schlägt selten zehn
+  konsistente. Mehr Versuche = mehr Chancen, den Testbatch zu gewinnen.
+- **Ein Thema pro Account-Phase** — wild zwischen Formaten/Themen wechseln
+  verwässert, welches Publikum der Algorithmus als "Ziel-Zuschauer" lernt.
+
+**Was ich dafür nicht liefern kann:** echte Insights-Zahlen (Completion
+Rate, Rewatch-Rate) — dafür braucht es weiterhin die TikTok-eigene
+Analytics-Ansicht. Screenshots davon sind hier jederzeit willkommen für eine
+konkrete Auswertung statt Vermutungen.
+
+---
+
+## 6. Analyse-Rhythmus (weil ich keinen direkten Zugriff habe)
 
 Vorschlag für eine echte, laufende Analyse: **einmal pro Woche** folgende
 Zahlen aus dem professionellen Dashboard (Profil → Professionelles Dashboard
@@ -125,7 +177,7 @@ Analyse statt Rätselraten.
 
 ---
 
-## 6. Monetarisierungs-Fahrplan (Phasenmodell)
+## 7. Monetarisierungs-Fahrplan (Phasenmodell)
 
 **Phase 1 — jetzt, 100–1.000 Follower: Marke aufbauen, nicht verkaufen.**
 Konsistenter Rhythmus, Charaktere/Wiedererkennung etablieren, Link-in-Bio
@@ -152,7 +204,7 @@ Monetarisierung erzwingen — das drückt in dieser Phase eher die Reichweite.
 
 ---
 
-## 7. Was unter „Automatisierung" seriös möglich ist
+## 8. Was unter „Automatisierung" seriös möglich ist
 
 Echte Bot-Automatisierung von Postings/Interaktionen verstößt gegen die
 Meta-Nutzungsbedingungen und riskiert Shadowban oder Sperrung — das killt
@@ -172,7 +224,7 @@ Vertrauenswürdigkeit bei Marken in Phase 2/3.
 
 ---
 
-## 8. Nächste Schritte
+## 9. Nächste Schritte
 
 1. Charaktere/Namen für die vier Tiere festlegen, falls noch nicht geschehen.
 2. Mit dem **PfotenPlan**-Tool (`index.html` in diesem Ordner) die ersten
