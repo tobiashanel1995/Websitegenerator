@@ -158,6 +158,25 @@ Rate, Rewatch-Rate) — dafür braucht es weiterhin die TikTok-eigene
 Analytics-Ansicht. Screenshots davon sind hier jederzeit willkommen für eine
 konkrete Auswertung statt Vermutungen.
 
+**Trend-Radar-Methode (statt fester Trend-Liste):** Trends rotieren
+innerhalb weniger Tage — eine fest aufgeschriebene Liste wäre in ein bis zwei
+Wochen veraltet. Das eigentlich Wiederverwendbare ist die **Übersetzungs-
+Methode**: einen aktuellen Trend (Sound, Textformat, Meme-Vorlage) nehmen
+und auf einen der vier Charaktere/eine Alltagssituation übertragen, statt
+ihn 1:1 zu kopieren. Praktisch geprüft funktionieren dafür besonders gut:
+
+- **Kontrast-Audio-Memes** — ruhiges/niedliches Tier + aggressiver oder
+  dramatischer Sound-Clip als Voiceover (Komik durch Gegensatz).
+- **"Gefürchteter Moment"-Reaktionsaudio** — der Sekundenbruchteil, bevor
+  das Tier merkt, was gerade passiert (Krallenschere, Transportbox,
+  Wasserspray) — passt zu hyper-spezifischem, wiedererkennbarem Content.
+- **Vorher/Nachher-Transitions** — auf den Beat-Drop geschnitten, gut
+  geeignet für Vergleiche zwischen den vier Tierarten auf denselben Trigger.
+
+Vor jedem Dreh kurz im TikTok-eigenen Sound-Picker („Trends"-Tab) prüfen,
+welcher aktuelle Sound zur jeweiligen Methode passt — nie im Voraus fest
+einplanen.
+
 ---
 
 ## 6. Analyse-Rhythmus (weil ich keinen direkten Zugriff habe)
